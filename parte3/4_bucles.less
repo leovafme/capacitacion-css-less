@@ -1,0 +1,28 @@
+/*LESS*/
+
+//------------------------- Variables -------------------------
+
+@color1:#ba12e2;
+
+//------------------------- Maxis -----------------------------
+
+//Bucles
+
+.bucle(@cont) when (@cont > 0) {
+  .bucle((@cont - 1));    // proxima iteración
+  height: ((500px/3) * @cont);
+}
+
+p {
+  .bucle(5);
+}
+
+/*
+p {
+  height: 166.66666666666666px;
+  height: 333.3333333333333px;
+  height: 500px;
+  height: 666.6666666666666px;
+  height: 833.3333333333333px;
+}
+*/

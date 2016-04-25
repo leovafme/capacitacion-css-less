@@ -1,0 +1,50 @@
+/*tamaño de la columna 8.3333333333333333% para una grid de 12*/
+@columnaT: 8.3333333333333333%;
+/*tamaño de los margenes que tendra cada fila*/
+@margen: 5px;
+/*tamaño total*/
+@totalFila: 100%;
+
+.randomColor() {
+  @randomColor: `(Math.random()*0xFFFFFF<<0).toString(16)`;
+  @colorHex: e(@randomColor);
+  @colorFondo: ~"#@{colorHex}";
+}
+
+.calcularCaja (@laColumna: 1) {
+  width: @laColumna * @columnaT;
+  min-height: 30px;
+  float: left;
+  .randomColor();
+  background-color: @colorFondo;
+}
+
+
+.caja_1 { .calcularCaja(1); }
+.caja_2 { .calcularCaja(2); }
+.caja_3 { .calcularCaja(3); }
+.caja_4 { .calcularCaja(4); }
+.caja_5 { .calcularCaja(5); }
+.caja_6 { .calcularCaja(6); }
+.caja_7 { .calcularCaja(7); }
+.caja_8 { .calcularCaja(8); }
+.caja_9 { .calcularCaja(9); }
+.caja_10 { .calcularCaja(10); }
+.caja_11 { .calcularCaja(11); }
+.caja_12 { .calcularCaja(12); }
+
+.contenedor {
+	margin: 0 @margen;
+	overflow: hidden;
+	display: inline;
+}
+.fila {
+	width: @totalFila;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.fila .fila {
+	margin: 0 (@margen * -1);
+	width: auto;
+	display: inline-block;
+}

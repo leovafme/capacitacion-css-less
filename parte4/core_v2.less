@@ -1,0 +1,47 @@
+/*tamaño de la columna 8.3333333333333333% para una grid de 12*/
+@columnaT: 8.3333333333333333%;
+/*tamaño de los margenes que tendra cada fila*/
+@margen: 5px;
+/*tamaño total*/
+@totalFila: 100%;
+
+.randomColor() {
+  @randomColor: `(Math.random()*0xFFFFFF<<0).toString(16)`;
+  @colorHex: e(@randomColor);
+  @colorFondo: ~"#@{colorHex}";
+}
+
+.calcularCaja (@laColumna: 1) {
+  width: @laColumna * @columnaT;
+  min-height: 30px;
+  float: left;
+  .randomColor();
+  background-color: @colorFondo;
+}
+
+
+
+.bucle(@cont) when (@cont > 0) {
+  .bucle((@cont - 1));    // proxima iteración
+  .caja_@{cont} {
+    .calcularCaja(@cont);
+  }
+}
+
+.bucle(12);
+
+.contenedor {
+	margin: 0 @margen;
+	overflow: hidden;
+	display: inline;
+}
+.fila {
+	width: @totalFila;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.fila .fila {
+	margin: 0 (@margen * -1);
+	width: auto;
+	display: inline-block;
+}
